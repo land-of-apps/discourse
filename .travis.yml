@@ -1,0 +1,16 @@
+# Turn on validation, so we can use import:
+version: ~> 1.0
+
+import:
+- land-of-apps/land-of-apps:travis/ruby-imports.yml
+
+install:
+- bundle install --jobs=3 --retry=3
+
+services:
+- postgresql
+- redis
+
+script:
+- bundle exec rake db:create db:migrate
+- APPMAP=true bundle exec rspec $(find spec/requests -name "[a-o]*spec.rb" | grep -v -e spec/requests/admin -e spec/requests/api | head -1)
