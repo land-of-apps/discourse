@@ -19,6 +19,7 @@ require 'action_controller/railtie'
 require 'action_view/railtie'
 require 'action_mailer/railtie'
 require 'sprockets/railtie'
+require 'appmap/railtie'
 
 # Plugin related stuff
 require_relative '../lib/plugin_initialization_guard'
