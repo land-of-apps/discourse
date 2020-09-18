@@ -5,6 +5,8 @@ if ENV['COVERAGE']
   SimpleCov.start
 end
 
+require 'appmap/rspec'
+
 require 'rubygems'
 require 'rbtrace'
 

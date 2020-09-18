@@ -6,6 +6,8 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', require: false, platform: :mri
 
+gem 'appmap', github: 'applandinc/appmap-ruby', branch: 'master'
+
 def rails_master?
   ENV["RAILS_MASTER"] == '1'
 end
