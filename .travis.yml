@@ -1,0 +1,19 @@
+# Turn on validation, so we can use import:
+version: ~> 1.0
+
+import:
+- land-of-apps/land-of-apps:travis/ruby-imports.yml
+
+addons:
+  apt:
+    packages:
+    - parallel
+
+services:
+- postgresql
+- redis
+
+
+script:
+- "parallel -j3 --lb env TEST_ENV_NUMBER={%} bundle exec rails db:create db:environment:set db:migrate ::: seq 1 $(parallel --number-of-cpus)"
+- find spec/requests -name \*_spec.rb | parallel -X --lb -v -j3 env RAIlS_ENV=test TEST_ENV_NUMBER={%} APPMAP=true bundle exec rspec -f doc {}

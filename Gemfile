@@ -172,6 +172,8 @@ group :test, :development do
   gem 'parallel_tests'
 
   gem 'rswag-specs'
+
+  gem 'appmap'
 end
 
 group :development do
